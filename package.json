@@ -1,0 +1,25 @@
+{
+  "name": "express-stripe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ferpintado/express-stripe.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ferpintado/express-stripe/issues"
+  },
+  "homepage": "https://github.com/ferpintado/express-stripe#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "pug": "^2.0.0-beta11",
+    "stripe": "^4.15.1"
+  }
+}
