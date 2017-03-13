@@ -28,4 +28,4 @@ app.post("/charge", (req, res) => {
   .then(charge => res.render("charge.pug"));
 });
 
-app.listen(process.env.PORT || 5000;);
+app.listen(process.env.PORT);
