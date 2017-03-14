@@ -1,5 +1,6 @@
 const keyPublishable = process.env.PUBLISHABLE_KEY;
 const keySecret = process.env.SECRET_KEY;
+var port = process.env.PORT || 8080;
 
 const app = require("express")();
 const stripe = require("stripe")(keySecret);
@@ -11,7 +12,8 @@ app.get("/", (req, res) =>
   res.render("index.pug", {keyPublishable}));
 
 app.post("/charge", (req, res) => {
-  let amount = 500;
+  let amount = req.body.amount;
+  let description = req.body.description;
   
   stripe.customers.create({
     email: req.body.stripeEmail,
@@ -20,12 +22,12 @@ app.post("/charge", (req, res) => {
   .then(customer =>
     stripe.charges.create({
       amount,
-      description: "Sample Charge",
-      currency: "usd",
+      description: description,
+      currency: "cad",
       customer: customer.id
     }))
-  .catch(err => console.log("Error:", err))
-  .then(charge => res.render("charge.pug"));
+  .catch(err => res.json(err))
+  .then(charge => res.json(charge));
 });
 
-app.listen(process.env.PORT);
+app.listen(port);
